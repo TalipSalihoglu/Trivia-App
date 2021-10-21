@@ -1,0 +1,28 @@
+<div class="container">
+     <div>
+        <div class="card text-center mt-5">
+            <div class="card-header">
+              {{title}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{question.question}}</h5>
+                <div class="mt-3">
+                    <input> 
+                    <button class="btn btn-primary btn-sm">Submit</button> 
+                </div>
+              <div *ngIf="isShowAnswer" class="mt-3">
+                <a (click)="showAnswer()" class="btn btn-danger">Hide</a>
+              </div>
+              <div *ngIf="!isShowAnswer" class="mt-3">
+                <a (click)="showAnswer()" class="btn btn-primary">Show Answer</a>
+              </div>
+            </div>
+            <div *ngIf="isShowAnswer" >
+               <h5> {{question.answer | uppercase}}</h5>
+            </div>
+            <div class="card-footer text-muted">
+                {{question.created_at | date}}                                                                          
+            </div>
+          </div>
+    </div>
+</div>

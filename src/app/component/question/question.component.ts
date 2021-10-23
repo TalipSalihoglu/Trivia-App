@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Question } from 'src/app/model/question.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { QuestionService } from 'src/app/services/question.service';
@@ -12,7 +13,10 @@ export class QuestionComponent implements OnInit {
   public question :Question = new Question();
   public isShowAnswer:boolean =false
   public title?:string;
-  constructor(private questionService:QuestionService,private categoryService:CategoryService) { }
+  answerInput?:string;
+  constructor(private questionService:QuestionService,
+              private categoryService:CategoryService,
+              private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.getQuestion()
@@ -32,6 +36,14 @@ export class QuestionComponent implements OnInit {
     this.categoryService.getCategoryById(id).subscribe(response=>{
       this.title=response.title
     }) 
+  }
+  checkAnswer(){
+    if(this.question.answer?.toUpperCase()==this.answerInput?.toUpperCase()){
+     this.toastrService.success("Answer is correct")
+    }else{
+      this.toastrService.error("Answer is wrong")
+    }
+
   }
   
 }

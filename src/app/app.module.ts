@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { QuestionComponent } from './component/question/question.component';
 import { NaviComponent } from './component/navi/navi.component';
 import { CategoryComponent } from './component/category/category.component';
-
+import { FormsModule } from '@angular/forms';
+import {ToastrModule} from "ngx-toastr";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,12 @@ import { CategoryComponent } from './component/category/category.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-center-center"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

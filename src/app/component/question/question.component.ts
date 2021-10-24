@@ -14,15 +14,20 @@ export class QuestionComponent implements OnInit {
   public isShowAnswer:boolean =false
   public title?:string;
   answerInput?:string;
+  numOfCorrect:number=0
+  numOfWrong:number=0
+  numberOfSkip:number=0
   constructor(private questionService:QuestionService,
               private categoryService:CategoryService,
               private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.getQuestion()
+
   }
 
   getQuestion(){
+    this.isShowAnswer=false
     this.questionService.getQuestion().subscribe(response=>{                  
       this.question=response[0]
       this.getCategoryById(this.question.category_id)
@@ -40,10 +45,16 @@ export class QuestionComponent implements OnInit {
   checkAnswer(){
     if(this.question.answer?.toUpperCase()==this.answerInput?.toUpperCase()){
      this.toastrService.success("Answer is correct")
+     this.numOfCorrect+=1
+     this.answerInput=""
+     this.nextQuestion();
     }else{
       this.toastrService.error("Answer is wrong")
+      this.numOfWrong+=1
     }
-
   }
-  
+  nextQuestion(){
+    this.getQuestion()
+    this.numberOfSkip+=1
+  }  
 }

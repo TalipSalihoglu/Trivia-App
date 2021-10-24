@@ -1,14 +1,18 @@
-<div class="container">
-     <div>
+      <div class="container">
+        <div>
+          {{numOfCorrect}} Correct {{numOfWrong}} Wrong {{numberOfSkip}} Skip
+        </div>
         <div class="card text-center mt-5">
             <div class="card-header">
               {{title}}
             </div>
             <div class="card-body">
               <h5 class="card-title">{{question.question}}</h5>
-              <div class="input-group">
-                <input type="text" id="answerInput" [(ngModel)]="answerInput" placeholder="enter your answer">
-                <button (click)="checkAnswer()" class="btn btn-outline-primary" type="button">Submit</button>
+              <div class="row-3"> 
+                <div class="input-group">
+                  <input class="text-center offset-md-4" type="text" id="answerInput" [(ngModel)]="answerInput" placeholder="enter your answer">
+                  <button (click)="checkAnswer()" class="btn btn-outline-primary" type="button">Submit</button>
+                </div>
               </div>
               <div *ngIf="isShowAnswer" class="mt-3">
                 <a (click)="showAnswer()" class="btn btn-danger">Hide</a>
@@ -20,9 +24,9 @@
             <div *ngIf="isShowAnswer" >
                <h5> {{question.answer | uppercase}}</h5>
             </div>
+            <button (click)="nextQuestion()" class="btn btn-outline-primary btn-sm offset-md-11" type="button">Skip</button>
             <div class="card-footer text-muted">
                 {{question.created_at | date}}                                                                          
             </div>
-          </div>
-    </div>
-</div>
+        </div>
+      </div>

@@ -47,7 +47,7 @@ export class QuestionComponent implements OnInit {
      this.toastrService.success("Answer is correct")
      this.numOfCorrect+=1
      this.answerInput=""
-     this.nextQuestion();
+     this.getQuestion()
     }else{
       this.toastrService.error("Answer is wrong")
       this.numOfWrong+=1

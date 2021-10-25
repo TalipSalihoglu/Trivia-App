@@ -1,9 +1,23 @@
-      <div class="container">
-        <div>
-          {{numOfCorrect}} Correct {{numOfWrong}} Wrong {{numberOfSkip}} Skip
+      <div class="container">   
+        <div class="mt-5">
+          <table class="table table-bordered table-dark text-center table-sm">
+            <thead>
+                <tr>
+                    <th>Correct</th>
+                    <th>Wrong</th>
+                    <th>Skip</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  class="table-success">
+                    <td>{{numOfCorrect}}</td>
+                    <td>{{numOfWrong}} </td>
+                    <td>{{numberOfSkip}}</td>
+            </tbody>
+          </table>
         </div>
-        <div class="card text-center mt-5">
-            <div class="card-header">
+        <div class="card text-center mt-1">
+            <div class="card-header font-weight-bold">
               {{title}}
             </div>
             <div class="card-body">
